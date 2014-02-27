@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONFormData</title>
+
+  <style>
+    form {
+      margin: 20px;
+    }
+    .field {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <form enctype='application/json' action="/human" method="post">
+    <div class="field">
+        <input type="text" name="fullName" placeholder="Full name">
+    </div>
+    <div class="field">
+        <label for="gender">Gender</label>
+        <select name="gender">
+            <option value="unknown" selected>Unknown</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+    </div>
+    <div class="field">
+        <label for="birthDate">Birth date</label>
+        <input type="date" name="birthDate">
+    </div>
+    <div class="field">
+        <label for="cookies">Do you love cookies?</label>
+        <input type="radio" name="cookies" value="yes"> Yes
+        <input type="radio" name="cookies" value="no"> No
+        <input type="radio" name="cookies" value="idk" checked> Cookies?
+    </div>
+    <div class="field">
+        <label for="userpic">Userpic</label>
+        <input type="file" name="userpic" title="5MB per file max" multiple>
+    </div>
+    <div class="field">
+        <button type="submit">Submit</button>
+    </div>
+  </form>
+
+  <script src="../src/json-formdata.js"></script>
+  <script>
+
+    /* Pass callback function, which is an error handler,
+     * as the second argument, to let JSONFormData handle things.
+     */
+    var form = document.querySelector('form');
+
+    new JSONFormData(form, function (err, res) {
+        // Callback...
+    });
+
+  </script>
+
+</body>
+</html>
