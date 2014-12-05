@@ -87,7 +87,7 @@
     }
 
     /* use coerced integer value if we can */
-    value = (coercedValue == value) ? coercedValue : value;
+    value = (coercedValue === value) ? coercedValue : value;
 
     while ((matches = accessorRegex.exec(path))) {
 
@@ -96,7 +96,7 @@
       var parsedMatch = parseInt(matches[1], 10);
       if(matches[1] === '') {
         accessors.push('[]');
-      } else if (parsedMatch == matches[1]) {
+      } else if (parsedMatch === matches[1]) {
         accessors.push(parsedMatch);
       } else {
         accessors.push(matches[1]);
