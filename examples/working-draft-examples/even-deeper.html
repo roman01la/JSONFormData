@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONFormData Example - Even Deeper</title>
+
+  <style>
+    form {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <form enctype='application/json' method='post'>
+    <input name='pet[0][species]' value='Dahut'>
+    <input name='pet[0][name]' value='Hypatia'>
+    <input name='pet[1][species]' value='Felis Stultus'>
+    <input name='pet[1][name]' value='Billie'>
+    <input type='submit' value='Test'>
+  </form>
+
+  <script src="../../src/json-formdata.js"></script>
+  <script>
+
+    var form = document.querySelector('form');
+
+    new JSONFormData(form, function (err, res) {
+      // Callback...
+    });
+
+  </script>
+
+</body>
+</html>

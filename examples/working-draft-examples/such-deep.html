@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONFormData Example - Such Deep</title>
+
+  <style>
+    form {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <form enctype='application/json' method='post'>
+    <input name='wow[such][deep][3][much][power][!]' value='Amaze'>
+    <input type='submit' value='Test'>
+  </form>
+
+  <script src="../../src/json-formdata.js"></script>
+  <script>
+
+    var form = document.querySelector('form');
+
+    new JSONFormData(form, function (err, res) {
+      // Callback...
+    });
+
+  </script>
+
+</body>
+</html>

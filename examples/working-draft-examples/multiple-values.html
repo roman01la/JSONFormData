@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONFormData Example - Multiple Values</title>
+
+  <style>
+    form {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <form enctype='application/json' method='post'>
+    <input type='number' name='bottle-on-wall' value='1'>
+    <input type='number' name='bottle-on-wall' value='2'>
+    <input type='number' name='bottle-on-wall' value='3'>
+    <input type='submit' value='Test'>
+  </form>
+
+  <script src="../../src/json-formdata.js"></script>
+  <script>
+
+    var form = document.querySelector('form');
+
+    new JSONFormData(form, function (err, res) {
+      // Callback...
+    });
+
+  </script>
+
+</body>
+</html>
