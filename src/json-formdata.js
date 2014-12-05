@@ -34,11 +34,18 @@
         e.preventDefault();
 
         self.extractValues(fields, function() {
-          var xhr = new XMLHttpRequest();
+          var xhr = new XMLHttpRequest(),
+              requestURL,
+              urlencoded;
 
-          xhr.open(self.method, self.action);
+          if (self.method === 'get') {
+            urlencoded = self.toUrlEncoded(self.formData);
+          }
+
+          requestURL = urlencoded ? self.action + '?' + urlencoded : self.action;
+
+          xhr.open(self.method, requestURL);
           xhr.setRequestHeader('Content-Type', self.enctype);
-          xhr.send(JSON.stringify(self.formData));
 
           xhr.addEventListener('loadend', function() {
             if (this.status !== 200) {
@@ -50,6 +57,8 @@
               callback(null, this.response);
             }
           }, false);
+
+          xhr.send(urlencoded ? null : JSON.stringify(self.formData));
         });
       }, false);
     } else {
@@ -222,6 +231,57 @@
       });
     } else {
       callback({message: 'No files has been found!'});
+    }
+  };
+
+  /* https://gist.github.com/dgs700/4677933 */
+  JSONFormData.prototype.toUrlEncoded = function (formDataObj) {
+    var urlString = [],
+        r20 = /%20/g,
+        output;
+
+    if (formDataObj instanceof Array) {
+      for (var name in formDataObj) {
+        this.appendUrlEncoded(name, formDataObj[name], urlString);
+      }
+    } else {
+      for (var prefix in formDataObj) {
+        this.buildParams(prefix, formDataObj[prefix], urlString);
+      }
+    }
+
+    output = urlString.join('&').replace(r20, '+');
+
+    return output;
+  };
+
+  JSONFormData.prototype.appendUrlEncoded = function (key, value, urlString) {
+    // If value is a function, invoke it and return its value
+    value = ( typeof value === 'function' ) ? value() : ( value === null ? '' : value );
+    urlString[urlString.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value);
+  };
+
+  JSONFormData.prototype.buildParams = function (prefix, obj, urlString) {
+    var name, i, l, rbracket;
+
+    rbracket = /\[\]$/;
+
+    if (obj instanceof Array) {
+      for (i = 0, l = obj.length; i < l; i++) {
+        if (rbracket.test(prefix)) {
+          this.appendUrlEncoded(prefix, obj[i], urlString);
+        } else {
+          this.buildParams(prefix + '[' + ( typeof obj[i] === 'object' ? i : '' ) + ']', obj[i], urlString);
+        }
+      }
+    } else if (typeof obj === 'object') {
+      // Serialize object item.
+      for (name in obj) {
+        this.buildParams(prefix + '[' + name + ']', obj[name], urlString);
+      }
+    } else {
+      // Serialize scalar item.
+      this.appendUrlEncoded(prefix, obj, urlString);
     }
   };
 
