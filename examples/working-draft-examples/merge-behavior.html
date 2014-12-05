@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONFormData Example - Merge Behavior</title>
+
+  <style>
+    form {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <form enctype='application/json' method='post'>
+    <input name='mix' value='scalar'>
+    <input name='mix[0]' value='array 1'>
+    <input name='mix[2]' value='array 2'>
+    <input name='mix[key]' value='key key'>
+    <input name='mix[car]' value='car key'>
+    <input type='submit' value='Test'>
+  </form>
+
+  <script src="../../src/json-formdata.js"></script>
+  <script>
+
+    var form = document.querySelector('form');
+
+    new JSONFormData(form, function (err, res) {
+      // Callback...
+    });
+
+  </script>
+
+</body>
+</html>

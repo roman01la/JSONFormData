@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSONFormData Example - Files</title>
+
+  <style>
+    form {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <form enctype='application/json' method='post'>
+    <input type='file' name='file' multiple>
+    <input type='submit' value='Test'>
+  </form>
+
+  <script src="../../src/json-formdata.js"></script>
+  <script>
+
+    var form = document.querySelector('form');
+
+    new JSONFormData(form, function (err, res) {
+      // Callback...
+    });
+
+  </script>
+
+</body>
+</html>
