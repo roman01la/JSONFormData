@@ -8,7 +8,9 @@
   /* Constructor */
   window.JSONFormData = function (formElement, callback) {
     if (formElement.getAttribute('enctype') !== 'application/json') {
-      console.warn('Wrong form enctype!');
+      if (window.console) {
+        console.warn('Wrong form enctype!');
+      }
     } else {
       return this.initialize(formElement, callback);
     }
