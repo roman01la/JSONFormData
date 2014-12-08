@@ -194,7 +194,6 @@
       }
     });
 
-    console.log(JSON.stringify(self.formData, null, 4));
     if (!hasFiles && callback) {
       callback();
     }
