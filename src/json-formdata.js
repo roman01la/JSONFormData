@@ -188,6 +188,10 @@
               }
             }
           });
+        } else if(field.type === 'select-multiple'){
+          [].forEach.call(field.selectedOptions, function(option){
+            self.putFormData(field.name + '[]', option.value);
+          });
         } else if(!isCheckable || (isCheckable && field.checked)) {
           self.putFormData(field.name, field.value);
         }
