@@ -7,7 +7,7 @@
 
   /* Constructor */
   window.JSONFormData = function (formElement, callback) {
-    //
+    
     if (!window.console) {
       window.console.log = window.console.warn = function(){};
     }
