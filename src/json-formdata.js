@@ -7,7 +7,7 @@
 
   /* Constructor */
   window.JSONFormData = function (formElement, callback) {
-    
+
     if (!window.console) {
       window.console.log = window.console.warn = function(){};
     }
@@ -192,7 +192,7 @@
           });
         } else if(field.type === 'select-multiple'){
           [].forEach.call(field.selectedOptions, function(option){
-            self.putFormData(field.name + '[]', option.value);
+            self.putFormData(field.name + '[]', option.value, field.type);
           });
         } else if(!isCheckable || (isCheckable && field.checked)) {
           self.putFormData(field.name, field.value, field.type);
