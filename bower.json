@@ -1,0 +1,33 @@
+{
+  "name": "json-formdata",
+  "version": "1.0.0",
+  "homepage": "https://github.com/roman01la/JSONFormData",
+  "authors": [
+    "Roman Liutikov <roman01la@romanliutikov.com>"
+  ],
+  "description": "HTML JSON form submission polyfill",
+  "main": "dist/json-formdata.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "json",
+    "form",
+    "formdata",
+    "polyfill"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "coverage",
+    "package.json",
+    "karma.conf.js",
+    "Gulpfile.js"
+  ]
+}
