@@ -1,4 +1,5 @@
 [![Build Status](https://api.travis-ci.org/roman01la/JSONFormData.svg?branch=umd)](https://travis-ci.org/roman01la/JSONFormData)
+[![Coverage Status](https://coveralls.io/repos/roman01la/JSONFormData/badge.svg?branch=umd)](https://coveralls.io/r/roman01la/JSONFormData)
 
 # JSONFormData
 
