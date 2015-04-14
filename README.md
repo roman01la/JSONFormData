@@ -1,8 +1,10 @@
+[![Build Status](https://api.travis-ci.org/roman01la/JSONFormData.svg?branch=umd)](https://travis-ci.org/roman01la/JSONFormData)
+
 #JSONFormData
 
 HTML JSON form submission polyfill based on [W3C HTML JSON form submission](http://darobin.github.io/formic/specs/json/) unofficial draft.
 
-This is an early stage project. 
+This is an early stage project.
 
 ##Usage
 There are two ways of using `JSONFormData` object, both similar to usual form submission handling.
