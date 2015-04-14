@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp'),
     umd = require('gulp-umd'),
     uglify = require('gulp-uglify'),

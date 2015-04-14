@@ -115,7 +115,7 @@ JSONFormData.prototype.putFormData = function(path, value, type) {
       }
     } else {
       if(typeof self.formData[firstKey] !== 'object') {
-        self.formData[firstKey] = {'':self.formData[firstKey]};
+        self.formData[firstKey] = {'': self.formData[firstKey]};
       }
     }
 
@@ -211,7 +211,7 @@ JSONFormData.prototype.fileToJSON = function (files, name, callback) {
     self.formData[name] = [];
 
     [].forEach.call(files, function (file, index) {
-      if (file.size > 5*1024*1024) {
+      if (file.size > 5 * 1024 * 1024) {
         return callback({message: 'One or more files is >5MB'});
       } else {
         var fileReader = new FileReader();
