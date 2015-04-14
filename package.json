@@ -1,12 +1,8 @@
 {
-  "name": "JSONFormData",
+  "name": "json-formdata",
   "version": "1.0.0",
   "description": "HTML JSON form submission polyfill",
   "main": "dist/json-formdata.js",
-  "directories": {
-    "example": "examples",
-    "test": "test"
-  },
   "scripts": {
     "prepublish": "gulp build",
     "test": "gulp test"
