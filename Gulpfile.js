@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     umd = require('gulp-umd'),
     uglify = require('gulp-uglify'),
     header = require('gulp-header'),
+    coveralls = require('gulp-coveralls'),
     karma = require('karma').server,
     path = require('path');
 
@@ -16,7 +17,13 @@ var UMDConfig = {
   exports: name
 };
 
-gulp.task('test', function (done) {
+gulp.task('coverage', function() {
+
+  gulp.src('coverage/**/lcov.info')
+    .pipe(coveralls());
+});
+
+gulp.task('karma', function (done) {
 
   karma.start({
     configFile: path.join(__dirname, '/karma.conf.js'),
@@ -24,6 +31,8 @@ gulp.task('test', function (done) {
     autoWatch: false
   }, done);
 });
+
+gulp.task('test', ['karma', 'coverage']);
 
 gulp.task('build', function() {
 
