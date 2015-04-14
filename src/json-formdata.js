@@ -95,7 +95,7 @@ JSONFormData.prototype.putFormData = function(path, value, type) {
     var parsedMatch = parseInt(matches[1], 10);
     if(matches[1] === '') {
       accessors.push('[]');
-    } else if (parsedMatch == matches[1]) {
+    } else if (!isNaN(parsedMatch)) {
       accessors.push(parsedMatch);
     } else {
       accessors.push(matches[1]);
