@@ -1,0 +1,35 @@
+{
+  "name": "JSONFormData",
+  "version": "1.0.0",
+  "description": "HTML JSON form submission polyfill",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roman01la/JSONFormData.git"
+  },
+  "keywords": [
+    "json",
+    "form",
+    "formdata",
+    "polyfill"
+  ],
+  "author": "Roman Liutikov <roman01la@romanliutikov.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roman01la/JSONFormData/issues"
+  },
+  "homepage": "https://github.com/roman01la/JSONFormData",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-header": "^1.2.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-umd": "^0.1.3"
+  }
+}
