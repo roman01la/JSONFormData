@@ -1,15 +1,21 @@
 [![Build Status](https://api.travis-ci.org/roman01la/JSONFormData.svg?branch=umd)](https://travis-ci.org/roman01la/JSONFormData)
 
-#JSONFormData
+# JSONFormData
 
 HTML JSON form submission polyfill based on [W3C HTML JSON form submission](http://darobin.github.io/formic/specs/json/) unofficial draft.
 
 This is an early stage project.
 
-##Usage
+## Installation
+
+```
+npm i -S json-formdata
+```
+
+## Usage
 There are two ways of using `JSONFormData` object, both similar to usual form submission handling.
 
-###Raw HTML form
+### Raw HTML form
 It's possible to submit form asynchronously with minimum amount of JavaScript code.
 
 ```
@@ -20,7 +26,7 @@ It's possible to submit form asynchronously with minimum amount of JavaScript co
 </form>
 ```
 
-####Attributes settings
+#### Attributes settings
 - enctype `application/json` ― set request `Content-Type` header for JSON data.
 - action `url` ― request endpoint.
 - method `GET` `POST` `PUT` `DELETE` ― HTTP request method.
@@ -39,7 +45,7 @@ new JSONFormData(form, function (err, res) {
 });
 ```
 
-###JSONFormData object
+### JSONFormData object
 Form data can be sent manually, similar to a way of sending FormData object.
 
 ```
