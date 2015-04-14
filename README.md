@@ -12,6 +12,9 @@ This is an early stage project.
 ```
 npm i -S json-formdata
 ```
+```
+bower install --save json-formdata
+```
 
 ## Usage
 There are two ways of using `JSONFormData` object, both similar to usual form submission handling.
