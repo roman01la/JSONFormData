@@ -7,10 +7,13 @@
 
   /* Constructor */
   window.JSONFormData = function (formElement, callback) {
+
+    if (!window.console) {
+      window.console.log = window.console.warn = function(){};
+    }
+
     if (formElement.getAttribute('enctype') !== 'application/json') {
-      if (window.console) {
         console.warn('Wrong form enctype!');
-      }
     } else {
       return this.initialize(formElement, callback);
     }
@@ -72,13 +75,12 @@
   };
 
   /* Perform full evaluation on path and set value */
-  JSONFormData.prototype.putFormData = function(path, value) {
+  JSONFormData.prototype.putFormData = function(path, value, type) {
     var self = this,
       accessorRegex = /\[(.*?)]/g,
       matches,
       accessors = [],
-      firstKey = path.match(/(.+?)\[/),
-      coercedValue = parseInt(value, 10);
+      firstKey = path.match(/(.+?)\[/);
 
     if(firstKey === null) {
       firstKey = path;
@@ -87,7 +89,7 @@
     }
 
     /* use coerced integer value if we can */
-    value = (coercedValue == value) ? coercedValue : value;
+    value = (type === 'number') ? parseInt(value, 10) : value;
 
     while ((matches = accessorRegex.exec(path))) {
 
@@ -190,10 +192,10 @@
           });
         } else if(field.type === 'select-multiple'){
           [].forEach.call(field.selectedOptions, function(option){
-            self.putFormData(field.name + '[]', option.value);
+            self.putFormData(field.name + '[]', option.value, field.type);
           });
         } else if(!isCheckable || (isCheckable && field.checked)) {
-          self.putFormData(field.name, field.value);
+          self.putFormData(field.name, field.value, field.type);
         }
       }
     });
