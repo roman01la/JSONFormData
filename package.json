@@ -2,13 +2,13 @@
   "name": "JSONFormData",
   "version": "1.0.0",
   "description": "HTML JSON form submission polyfill",
-  "main": "index.js",
+  "main": "dist/json-formdata.js",
   "directories": {
     "example": "examples",
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "gulp build"
   },
   "repository": {
     "type": "git",
