@@ -179,4 +179,20 @@ describe('JSONFormData', function() {
 
     expect(formData).toEqual(jasmine.objectContaining(expected));
   });
+
+
+  it('Does not include buttons', function() {
+
+    formFixture.innerHTML =
+      '<input name=\'these\' value=\'buttons\' type=\'button\'>'+
+      '<input name=\'have\' value=\'not\' type=\'reset\'>'+
+      '<button name=\'to\' value=\'be\' type=\'reset\'>Button</button>' +
+      '<button name=\'included\' value="!" type=\'button\'>Button</button>';
+
+    var formData = new JSONFormData(formFixture).formData;
+
+    var expected = {};
+    expect(formData).toEqual({});
+  });
+
 });
