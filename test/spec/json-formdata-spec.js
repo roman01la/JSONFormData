@@ -181,13 +181,15 @@ describe('JSONFormData', function() {
   });
 
 
-  it('Does not include buttons', function() {
+  it('Supports button skipping', function() {
 
     formFixture.innerHTML =
-      '<input name=\'these\' value=\'buttons\' type=\'button\'>'+
-      '<input name=\'have\' value=\'not\' type=\'reset\'>'+
-      '<button name=\'to\' value=\'be\' type=\'reset\'>Button</button>' +
-      '<button name=\'included\' value="!" type=\'button\'>Button</button>';
+    '<input name=\'name1\' value=\'value1\' type=\'submit\'>'+
+    '<button name=\'name2\' value="value2">Button</button>' +
+    '<input name=\'these\' value=\'buttons\' type=\'button\'>'+
+    '<input name=\'have\' value=\'not\' type=\'reset\'>'+
+    '<button name=\'to\' value=\'be\' type=\'reset\'>Button</button>' +
+    '<button name=\'included\' value="!" type=\'button\'>Button</button>';
 
     var formData = new JSONFormData(formFixture).formData;
 
