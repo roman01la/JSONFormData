@@ -177,7 +177,7 @@
     [].forEach.call(fields, function (field, index) {
       safeIndex = index;
       isCheckable = (field.type === 'checkbox' || field.type === 'radio');
-      isButton = (field.type === 'button' || field.type === 'reset' || field.type === 'submit');
+      isButton = (field.type === 'button' || field.type === 'reset' || field.type === 'submit' || field.nodeName.toLowerCase() === 'button');
 
       if (!isButton) {
         if (field.type === 'file' && !!field.files.length) {

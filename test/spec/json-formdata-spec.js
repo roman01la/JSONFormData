@@ -180,7 +180,7 @@ describe('JSONFormData', function() {
     expect(formData).toEqual(jasmine.objectContaining(expected));
   });
 
-
+  //We wants to skip <button> elements and also <input type="submit|reset|button">. See discussion on commit f7340be32d0b8b186fdcf75df4671e65baed9420
   it('Supports button skipping', function() {
 
     formFixture.innerHTML =
