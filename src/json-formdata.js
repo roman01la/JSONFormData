@@ -169,15 +169,17 @@
         fieldsLn = fields.length - 1,
         hasFiles = false,
         safeIndex = null,
-        isCheckable = false;
+        isCheckable = false,
+        isButton = false;
 
     self.formData = {};
 
     [].forEach.call(fields, function (field, index) {
       safeIndex = index;
       isCheckable = (field.type === 'checkbox' || field.type === 'radio');
+      isButton = (field.type === 'button' || field.type === 'reset' || field.type === 'submit' || field.nodeName.toLowerCase() === 'button');
 
-      if (field.type !== 'submit') {
+      if (!isButton) {
         if (field.type === 'file' && !!field.files.length) {
           hasFiles = true;
           self.fileToJSON(field.files, field.name, function (err) {
