@@ -194,7 +194,23 @@ describe('JSONFormData', function() {
     var formData = new JSONFormData(formFixture).formData;
 
     var expected = {};
-    expect(formData).toEqual({});
+    expect(formData).toEqual(expected);
+  });
+
+  //We wants to skip elements with disabled attribute. See issue: https://github.com/roman01la/JSONFormData/issues/11
+  it('Supports disabled skipping', function() {
+
+    formFixture.innerHTML =
+    '<input name=\'name1\' value=\'value1\' type=\'text\' disabled>'+
+    '<input name=\'name2\' value=\'value2\' type=\'text\' disabled="disabled">'+
+    '<input name=\'name3\' value=\'value3\' type=\'text\' disabled="whatever">'+
+    '<input name=\'name4\' value=\'value4\' type=\'text\' disabled="">'+
+    '<input name=\'name5\' value=\'value5\' type=\'text\'>';
+
+    var formData = new JSONFormData(formFixture).formData;
+
+    var expected = {'name5':'value5'};
+    expect(formData).toEqual(expected);
   });
 
 });
