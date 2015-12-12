@@ -1,1 +1,4 @@
-script: phantomjs run-jasmine.js ./test/tests.html
+language: node_js
+node_js:
+  - "4.1"
+  - "0.12"

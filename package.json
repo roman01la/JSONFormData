@@ -1,0 +1,33 @@
+{
+  "name": "JSONFormData",
+  "version": "0.0.1",
+  "description": "HTML JSON form submission polyfill based on [W3C HTML JSON form submission](http://darobin.github.io/formic/specs/json/) unofficial draft.",
+  "main": "src/json-formdata.js",
+  "directories": {
+    "src": "src",
+    "example": "examples",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^6.4.0",
+    "browserify": "^11.2.0"
+  },
+  "scripts": {
+    "build": "mkdir -p dist && browserify src/json-formdata.js -s JSONFormData -o dist/json-formdata.js -t babelify --presets [es2015]",
+    "test": "npm run build && phantomjs ./run-jasmine.js test/tests.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roman01la/JSONFormData.git"
+  },
+  "keywords": [],
+  "author": "Roman Liutikov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/roman01la/JSONFormData/issues"
+  },
+  "homepage": "https://github.com/roman01la/JSONFormData#readme"
+}
