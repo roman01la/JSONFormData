@@ -22,19 +22,27 @@
   /* Initialize form */
   JSONFormData.prototype.initialize = function (formElement, callback) {
     var self = this,
-        fields = formElement.elements;
+        fields = formElement.elements,
+        submitButtons;
 
     this.form = formElement;
 
     this.enctype = 'application/json';
-    this.action = formElement.action;
     this.method = this.getMethod();
 
     this.formData = {};
 
+    submitButtons = this.form.querySelectorAll('[formaction]');
+    for(var k = 0; k < submitButtons.length; k++ ) {
+      submitButtons[k].addEventListener('click', function() {
+        this.form.action = this.getAttribute('formaction');
+      });
+    }
+
     if (callback) {
       this.form.addEventListener('submit', function (e) {
         e.preventDefault();
+        self.action = formElement.action;
 
         self.extractValues(fields, function() {
           var xhr = new XMLHttpRequest(),
